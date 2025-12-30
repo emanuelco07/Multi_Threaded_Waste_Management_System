@@ -17,13 +17,13 @@ The application simulates a fleet of N garbage trucks. Each truck operates as an
 ### Project Requirements
 *   **Independent Entities:** Every truck must be a standalone thread (th1..thN).
 *   **Centralized Control:** 
-    *   **Garage Thread (thgj):** Tracks all trucks and manages their deployment.
-    *   **Service Thread (thrp):** Identifies faulty trucks and performs repairs before they can return to service.
-    *   **Supervisor Thread (thsv):** Acts as a central logger, receiving event details from trucks, the garage, service, and ramps.
+    *   **Garage Thread (th_garaj):** Tracks all trucks and manages their deployment.
+    *   **Service Thread (th_reparare):** Identifies faulty trucks and performs repairs before they can return to service.
+    *   **Supervisor Thread (th_supervizor):** Acts as a central logger, receiving event details from trucks, the garage, service, and ramps.
 *   **Resource Constraints:** 
     *   One-lane road from the garage to the city.
     *   Two-lane bridge leading to the unloading ramps.
-    *   Two dedicated unloading ramps (thrmp1, thrmp2) with integrated weighing scales.
+    *   Two dedicated unloading ramps (th_rampa1, th_rampa2) with integrated weighing scales.
 *   **Communication:** All components must communicate using thread-safe mechanisms (Message Queues).
 
 ### Implementation Details
@@ -31,9 +31,3 @@ The application simulates a fleet of N garbage trucks. Each truck operates as an
 *   **Randomized Simulation:** Realistic behavior is achieved through randomized delays for city collection times, speeds, and potential mechanical failures.
 *   **Thread Safety:** Careful use of mutexes prevents race conditions when updating truck statuses or calculating total tonnage at the ramps.
 *   **Graceful Shutdown:** The system monitors all trucks and ensures every thread is joined and resources are released once all scheduled tours are completed.
-
-**Next Steps:**
-*   You can place this text in your `README.md` file.
-*   If you have screenshots of the terminal output (Supervisor log), you can add them using the `<table>` method we discussed earlier.
-
-Ready for the next project! Whenever you are prepared, just send me the code and documentation.
